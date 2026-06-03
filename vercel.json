@@ -1,0 +1,11 @@
+{
+  "installCommand": "cd diario-exploradores && npm ci",
+  "buildCommand": "cd diario-exploradores && npm run build",
+  "outputDirectory": "diario-exploradores/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
