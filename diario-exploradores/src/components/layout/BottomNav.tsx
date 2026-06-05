@@ -2,10 +2,10 @@ import { BarChart2, Home, PlusCircle, Star } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const items = [
-  { icon: Home, label: 'Descobertas', to: '/' },
-  { icon: Star, label: 'Favoritos', to: '/favorites' },
-  { icon: BarChart2, label: 'Dashboard', to: '/dashboard' },
-  { icon: PlusCircle, label: 'Nova', to: '/new' },
+  { icon: Home, label: 'Códice', to: '/' },
+  { icon: Star, label: 'Tesouros', to: '/favorites' },
+  { icon: BarChart2, label: 'Expedição', to: '/dashboard' },
+  { icon: PlusCircle, label: 'Registrar', to: '/new' },
 ]
 
 export function BottomNav() {

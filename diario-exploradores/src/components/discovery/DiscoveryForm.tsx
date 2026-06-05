@@ -27,14 +27,16 @@ interface FormErrors {
 export function DiscoveryForm({
   initialValue,
   onSubmit,
-  submitLabel = 'Salvar descoberta',
+  submitLabel = 'Salvar achado',
 }: DiscoveryFormProps) {
   const [title, setTitle] = useState(initialValue?.title ?? '')
   const [description, setDescription] = useState(initialValue?.description ?? '')
   const [category, setCategory] = useState<DiscoveryCategory>(
     initialValue?.category ?? 'Botânica',
   )
-  const [rarity, setRarity] = useState<RarityLevel>(initialValue?.rarity ?? 'Comum')
+  const [rarity, setRarity] = useState<RarityLevel>(
+    initialValue?.rarity ?? 'Incomum',
+  )
   const [photos, setPhotos] = useState<string[]>(initialValue?.photos ?? [])
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSaving, setIsSaving] = useState(false)
@@ -130,7 +132,7 @@ export function DiscoveryForm({
 
       <fieldset className="grid gap-2">
         <legend className="text-sm font-semibold text-stone-800">Raridade</legend>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {RARITY_LEVELS.map((item) => (
             <label
               className={`grid min-h-11 place-items-center rounded-lg border px-2 text-center text-sm font-bold ${

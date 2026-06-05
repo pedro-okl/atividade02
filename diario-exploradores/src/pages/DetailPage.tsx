@@ -27,7 +27,9 @@ export function DetailPage() {
           Voltar
         </Link>
         <div className="rounded-lg border border-stone-200 bg-white p-6 text-center">
-          <h2 className="text-lg font-black text-stone-950">Registro não encontrado</h2>
+          <h2 className="text-lg font-black text-stone-950">
+            Achado não encontrado
+          </h2>
         </div>
       </section>
     )
@@ -39,7 +41,7 @@ export function DetailPage() {
     }
 
     await deleteDiscovery(discovery.id)
-    showToast('Descoberta excluída.', 'success')
+    showToast('Achado excluído.', 'success')
     navigate('/')
   }
 
@@ -49,7 +51,7 @@ export function DetailPage() {
     }
 
     await toggleFavorite(discovery.id)
-    showToast('Favoritos atualizados.', 'success')
+    showToast('Tesouros atualizados.', 'success')
   }
 
   return (
@@ -105,7 +107,7 @@ export function DetailPage() {
       </div>
       <Button onClick={() => setIsDeleting(true)} variant="danger">
         <Trash2 className="size-4" />
-        Excluir descoberta
+        Excluir achado
       </Button>
 
       <Modal
@@ -113,7 +115,7 @@ export function DetailPage() {
         isOpen={isDeleting}
         onClose={() => setIsDeleting(false)}
         onConfirm={() => void handleDelete()}
-        title="Excluir descoberta?"
+        title="Excluir achado?"
       >
         Esta ação remove o registro e todas as fotos anexadas.
       </Modal>

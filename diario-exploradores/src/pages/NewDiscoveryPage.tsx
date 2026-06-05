@@ -13,10 +13,10 @@ export function NewDiscoveryPage() {
   async function handleSubmit(input: NewDiscoveryInput) {
     try {
       const discovery = await createDiscovery(input)
-      showToast('Descoberta salva.', 'success')
+      showToast('Achado registrado.', 'success')
       navigate(`/discovery/${discovery.id}`)
     } catch {
-      showToast('Erro ao salvar descoberta.', 'error')
+      showToast('Erro ao registrar achado.', 'error')
     }
   }
 
@@ -27,7 +27,9 @@ export function NewDiscoveryPage() {
         Voltar
       </Link>
       <div>
-        <h2 className="text-2xl font-black text-stone-950">Nova descoberta</h2>
+        <h2 className="text-2xl font-black text-stone-950">
+          Registrar achado
+        </h2>
       </div>
       <DiscoveryForm onSubmit={handleSubmit} />
     </section>

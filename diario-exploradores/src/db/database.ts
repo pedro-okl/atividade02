@@ -1,4 +1,5 @@
 import Dexie, { type Table } from 'dexie'
+import { normalizeRarity } from '../types'
 import type { DeletedDiscovery, Discovery, SyncStatus } from '../types'
 
 class ExplorerDatabase extends Dexie {
@@ -19,19 +20,29 @@ class ExplorerDatabase extends Dexie {
 
 export const db = new ExplorerDatabase()
 
+function normalizeDiscovery(discovery: Discovery): Discovery {
+  return {
+    ...discovery,
+    rarity: normalizeRarity(discovery.rarity),
+  }
+}
+
 export async function getAllDiscoveries() {
-  return db.discoveries.orderBy('createdAt').reverse().toArray()
+  const discoveries = await db.discoveries.orderBy('createdAt').reverse().toArray()
+  return discoveries.map(normalizeDiscovery)
 }
 
 export async function getDiscoveryById(id: string) {
-  return db.discoveries.get(id)
+  const discovery = await db.discoveries.get(id)
+  return discovery ? normalizeDiscovery(discovery) : undefined
 }
 
 export async function getPendingDiscoveries() {
-  return db.discoveries
+  const discoveries = await db.discoveries
     .where('syncStatus')
     .anyOf(['pending', 'error'])
     .toArray()
+  return discoveries.map(normalizeDiscovery)
 }
 
 export async function queueDeletedDiscovery(id: string) {
@@ -81,7 +92,7 @@ export async function mergeRemoteDiscoveries(remoteDiscoveries: Discovery[]) {
 
         if (shouldSaveRemote) {
           await db.discoveries.put({
-            ...remoteDiscovery,
+            ...normalizeDiscovery(remoteDiscovery),
             syncStatus: 'synced',
           })
           changeCount += 1
@@ -113,6 +124,7 @@ export async function saveSyncedDiscoveries(discoveries: Discovery[]) {
   await db.discoveries.bulkPut(
     discoveries.map((discovery) => ({
       ...discovery,
+      rarity: normalizeRarity(discovery.rarity),
       syncStatus: 'synced' as const,
     })),
   )

@@ -1,4 +1,4 @@
-import { Cloud, CloudOff, RefreshCw } from 'lucide-react'
+import { RefreshCw, Wifi, WifiOff } from 'lucide-react'
 
 interface SyncStatusPanelProps {
   isOnline: boolean
@@ -14,8 +14,8 @@ export function SyncStatusPanel({
   if (!isOnline) {
     return (
       <div className="flex min-h-12 items-center gap-3 border-b border-rose-100 bg-rose-50 px-4 text-sm font-semibold text-rose-800">
-        <CloudOff className="size-5" />
-        Offline - {pendingCount} registros pendentes
+        <WifiOff className="size-5" />
+        Rede offline - {pendingCount} registros pendentes
       </div>
     )
   }
@@ -24,15 +24,17 @@ export function SyncStatusPanel({
     return (
       <div className="flex min-h-12 items-center gap-3 border-b border-amber-100 bg-amber-50 px-4 text-sm font-semibold text-amber-800">
         <RefreshCw className="size-5 animate-spin" />
-        Online - sincronizando...
+        Rede online - sincronizando...
       </div>
     )
   }
 
   return (
     <div className="flex min-h-12 items-center gap-3 border-b border-emerald-100 bg-emerald-50 px-4 text-sm font-semibold text-emerald-800">
-      <Cloud className="size-5" />
-      {pendingCount > 0 ? `Online - ${pendingCount} pendentes` : 'Tudo sincronizado'}
+      <Wifi className="size-5" />
+      {pendingCount > 0
+        ? `Rede online - ${pendingCount} pendentes`
+        : 'Rede online - tudo sincronizado'}
     </div>
   )
 }

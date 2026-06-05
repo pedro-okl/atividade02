@@ -26,9 +26,11 @@ export function CategoryBadge({ children }: { children: ReactNode }) {
 
 export function RarityBadge({ rarity }: { rarity: RarityLevel }) {
   const styles: Record<RarityLevel, string> = {
-    Comum: 'border-green-200 bg-green-50 text-green-800',
-    Rara: 'border-amber-200 bg-amber-50 text-amber-800',
-    'Muito Rara': 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-800',
+    Incomum: 'border-green-200 bg-green-50 text-green-800',
+    Raro: 'border-sky-200 bg-sky-50 text-sky-800',
+    Épico: 'border-violet-200 bg-violet-50 text-violet-800',
+    Lendário: 'border-amber-200 bg-amber-50 text-amber-800',
+    Mítico: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-800',
   }
 
   return <Badge className={styles[rarity]}>{rarity}</Badge>

@@ -17,15 +17,17 @@ export function FavoritesPage() {
 
   async function handleFavorite(id: string) {
     await toggleFavorite(id)
-    showToast('Favoritos atualizados.', 'success')
+    showToast('Tesouros atualizados.', 'success')
   }
 
   return (
     <section className="grid gap-4">
       <div>
-        <h2 className="text-2xl font-black text-stone-950">Favoritos</h2>
+        <h2 className="text-2xl font-black text-stone-950">
+          Tesouros da expedição
+        </h2>
         <p className="text-sm font-medium text-stone-600">
-          {favorites.length} descoberta{favorites.length === 1 ? '' : 's'} destacada
+          {favorites.length} achado{favorites.length === 1 ? '' : 's'} lendário
           {favorites.length === 1 ? '' : 's'}
         </p>
       </div>
@@ -38,7 +40,7 @@ export function FavoritesPage() {
           <div>
             <Star className="mx-auto size-10 text-amber-500" />
             <h2 className="mt-3 text-lg font-black text-stone-950">
-              Nenhuma descoberta favoritada ainda.
+              Nenhum tesouro marcado ainda.
             </h2>
           </div>
         </section>

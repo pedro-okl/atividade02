@@ -5,6 +5,7 @@ import type {
   DiscoveryCategory,
   RarityLevel,
 } from '../types'
+import { normalizeRarity } from '../types'
 
 const PHOTOS_BUCKET = 'discovery-photos'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -104,7 +105,7 @@ function toDiscoveryRow(discovery: Discovery) {
     id: discovery.id,
     is_favorite: discovery.isFavorite,
     photos: discovery.photos,
-    rarity: discovery.rarity,
+    rarity: normalizeRarity(discovery.rarity),
     title: discovery.title,
     updated_at: discovery.updatedAt,
   }
@@ -118,7 +119,7 @@ function fromDiscoveryRow(row: DiscoveryRow): Discovery {
     id: row.id,
     isFavorite: row.is_favorite,
     photos: Array.isArray(row.photos) ? row.photos : [],
-    rarity: row.rarity,
+    rarity: normalizeRarity(row.rarity),
     syncStatus: 'synced',
     title: row.title,
     updatedAt: row.updated_at,

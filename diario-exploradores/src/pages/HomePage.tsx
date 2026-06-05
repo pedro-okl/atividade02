@@ -18,14 +18,16 @@ export function HomePage() {
 
   async function handleFavorite(id: string) {
     await toggleFavorite(id)
-    showToast('Favoritos atualizados.', 'success')
+    showToast('Tesouros atualizados.', 'success')
   }
 
   return (
     <>
       <section className="grid gap-3">
         <div>
-          <h2 className="text-2xl font-black text-stone-950">Descobertas</h2>
+          <h2 className="text-2xl font-black text-stone-950">
+            Códice de achados
+          </h2>
           <p className="text-sm font-medium text-stone-600">
             {discoveries.length} registro{discoveries.length === 1 ? '' : 's'} encontrado
             {discoveries.length === 1 ? '' : 's'}
@@ -39,9 +41,11 @@ export function HomePage() {
       {!loading && discoveries.length === 0 ? (
         <section className="grid min-h-64 place-items-center rounded-lg border border-dashed border-stone-300 bg-white p-6 text-center">
           <div>
-            <h2 className="text-lg font-black text-stone-950">Nenhuma descoberta</h2>
+            <h2 className="text-lg font-black text-stone-950">
+              Códice vazio
+            </h2>
             <p className="mt-2 text-sm text-stone-600">
-              Registre a primeira observação científica da expedição.
+              Registre o primeiro achado científico da expedição.
             </p>
           </div>
         </section>
@@ -60,7 +64,7 @@ export function HomePage() {
       ) : null}
 
       <Link
-        aria-label="Nova descoberta"
+        aria-label="Registrar achado"
         className="fixed bottom-24 right-4 z-30 grid size-14 place-items-center rounded-full bg-emerald-800 text-white shadow-xl"
         to="/new"
       >

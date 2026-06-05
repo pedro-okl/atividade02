@@ -18,13 +18,15 @@ export function DashboardPage() {
   return (
     <section className="grid gap-4">
       <div>
-        <h2 className="text-2xl font-black text-stone-950">Dashboard</h2>
+        <h2 className="text-2xl font-black text-stone-950">
+          Painel da expedição
+        </h2>
         <p className="text-sm font-medium text-stone-600">
           Última sincronização: {formatDateTime(lastSyncedAt)}
         </p>
       </div>
 
-      <StatsCard label="Total de descobertas" value={total} />
+      <StatsCard label="Total de achados" value={total} />
 
       <StatsCard label="% sincronizado" value={`${syncPercent}%`}>
         <div className="h-3 overflow-hidden rounded-full bg-stone-100">
@@ -37,7 +39,7 @@ export function DashboardPage() {
 
       <section className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
         <h3 className="text-sm font-black uppercase tracking-wide text-stone-600">
-          Por categoria
+          Trilhas por categoria
         </h3>
         <div className="mt-3 grid gap-2">
           {DISCOVERY_CATEGORIES.map((category) => (
@@ -53,7 +55,7 @@ export function DashboardPage() {
 
       <section className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
         <h3 className="text-sm font-black uppercase tracking-wide text-stone-600">
-          Por raridade
+          Tabela de raridade
         </h3>
         <div className="mt-3 grid gap-2">
           {RARITY_LEVELS.map((rarity) => (

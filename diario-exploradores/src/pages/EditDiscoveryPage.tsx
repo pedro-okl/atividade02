@@ -19,10 +19,10 @@ export function EditDiscoveryPage() {
 
     try {
       await updateDiscovery(discovery.id, input)
-      showToast('Descoberta atualizada.', 'success')
+      showToast('Achado atualizado.', 'success')
       navigate(`/discovery/${discovery.id}`)
     } catch {
-      showToast('Erro ao atualizar descoberta.', 'error')
+      showToast('Erro ao atualizar achado.', 'error')
     }
   }
 
@@ -34,7 +34,9 @@ export function EditDiscoveryPage() {
           Voltar
         </Link>
         <div className="rounded-lg border border-stone-200 bg-white p-6 text-center">
-          <h2 className="text-lg font-black text-stone-950">Registro não encontrado</h2>
+          <h2 className="text-lg font-black text-stone-950">
+            Achado não encontrado
+          </h2>
         </div>
       </section>
     )
@@ -50,12 +52,14 @@ export function EditDiscoveryPage() {
         Voltar
       </Link>
       <div>
-        <h2 className="text-2xl font-black text-stone-950">Editar descoberta</h2>
+        <h2 className="text-2xl font-black text-stone-950">
+          Revisar achado
+        </h2>
       </div>
       <DiscoveryForm
         initialValue={discovery}
         onSubmit={handleSubmit}
-        submitLabel="Atualizar descoberta"
+        submitLabel="Atualizar achado"
       />
     </section>
   )

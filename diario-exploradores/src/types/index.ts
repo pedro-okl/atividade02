@@ -1,4 +1,4 @@
-export type RarityLevel = 'Comum' | 'Rara' | 'Muito Rara'
+export type RarityLevel = 'Incomum' | 'Raro' | 'Épico' | 'Lendário' | 'Mítico'
 
 export type DiscoveryCategory =
   | 'Botânica'
@@ -41,4 +41,24 @@ export const DISCOVERY_CATEGORIES: DiscoveryCategory[] = [
   'Outro',
 ]
 
-export const RARITY_LEVELS: RarityLevel[] = ['Comum', 'Rara', 'Muito Rara']
+export const RARITY_LEVELS: RarityLevel[] = [
+  'Incomum',
+  'Raro',
+  'Épico',
+  'Lendário',
+  'Mítico',
+]
+
+const LEGACY_RARITY_LEVELS: Record<string, RarityLevel> = {
+  Comum: 'Incomum',
+  Rara: 'Raro',
+  'Muito Rara': 'Épico',
+}
+
+export function normalizeRarity(rarity: string): RarityLevel {
+  if (RARITY_LEVELS.includes(rarity as RarityLevel)) {
+    return rarity as RarityLevel
+  }
+
+  return LEGACY_RARITY_LEVELS[rarity] ?? 'Incomum'
+}
